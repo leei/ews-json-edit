@@ -71,9 +71,8 @@ module.exports = function (grunt) {
         options: {
           compress: true
         },
-        expand: true,
         src: ['dist/<%= name %>.css'],
-        ext: '.min.css'
+        dest: 'dist/<%= name %>.min.css'
       }
     },
     concurrent: {
