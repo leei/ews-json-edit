@@ -9,7 +9,6 @@ angular
         collapsed: '=?'
       },
       link: function(scope, element, attributes) {
-
         scope.data = {
           keyName: '',
           valueName: '',
@@ -38,15 +37,16 @@ angular
         scope.deleteKey = mxJsonEdit.deleteKey;
         scope.addItem = mxJsonEdit.addItem;
 
-
         if (scope.type !== 'array' && scope.type !== 'object') {
           console.error('scope.type was ' + scope.type);
         }
 
-        var newElement = angular.element($templateCache.get('mx/template/jsonedit/index.html'));
+        var newElement = angular.element(
+          $templateCache.get('mx/template/jsonedit/index.html')
+        );
         $compile(newElement)(scope);
         element.replaceWith(newElement);
-      },
+      }
       // templateUrl: 'mx/template/jsonedit/index.html'
     };
   });

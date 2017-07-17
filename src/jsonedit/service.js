@@ -1,4 +1,4 @@
-angular.module('mx.json.edit').factory('mxJsonEdit', function () {
+angular.module('mx.json.edit').factory('mxJsonEdit', function() {
   var result = {
     getType: getType,
     isNumber: isNumber,
@@ -57,10 +57,7 @@ angular.module('mx.json.edit').factory('mxJsonEdit', function () {
   function addItem(obj, data) {
     if (getType(obj) === 'Object') {
       // check input for key
-      if (
-        data.keyName === undefined ||
-        data.keyName.length === 0
-      ) {
+      if (data.keyName === undefined || data.keyName.length === 0) {
         alert('Please fill in a name');
       } else if (data.keyName.indexOf('$') === 0) {
         alert('The name may not start with $ (the dollar sign)');
@@ -71,31 +68,24 @@ angular.module('mx.json.edit').factory('mxJsonEdit', function () {
           if (
             !confirm(
               'An item with the name "' +
-              data.keyName +
-              '" exists already. Do you really want to replace it?'
+                data.keyName +
+                '" exists already. Do you really want to replace it?'
             )
           ) {
             return;
           }
         }
-        if (
-          data.valueType === data.numberName &&
-          !isNumber(data.valueName)
-        ) {
+        if (data.valueType === data.numberName && !isNumber(data.valueName)) {
           alert('Please fill in a number');
           return;
         }
         // add item to object
         switch (data.valueType) {
           case data.stringName:
-            obj[data.keyName] = data.valueName
-              ? data.valueName
-              : '';
+            obj[data.keyName] = data.valueName ? data.valueName : '';
             break;
           case data.numberName:
-            obj[data.keyName] = possibleNumber(
-              data.valueName
-            );
+            obj[data.keyName] = possibleNumber(data.valueName);
             break;
           case data.objectName:
             obj[data.keyName] = {};
@@ -113,10 +103,7 @@ angular.module('mx.json.edit').factory('mxJsonEdit', function () {
         data.showAddKey = false;
       }
     } else if (getType(obj) === 'Array') {
-      if (
-        data.valueType === data.numberName &&
-        !isNumber(data.valueName)
-      ) {
+      if (data.valueType === data.numberName && !isNumber(data.valueName)) {
         alert('Please fill in a number');
         return;
       }
