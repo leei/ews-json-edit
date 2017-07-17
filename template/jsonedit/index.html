@@ -1,0 +1,38 @@
+<span class="json-info">
+    <i ng-click="data.collapsed = !data.collapsed" class="glyphicon json-collapsed"
+      ng-class="{'glyphicon-chevron-down': !data.collapsed, 'glyphicon-chevron-right': data.collapsed}"></i>
+    <i ng-if="!data.showAddKey" ng-click="data.collapsed = false; data.showAddKey = true" class="glyphicon glyphicon-plus json-plus"></i>
+    <span>{{::(type === 'object') ? data.objectName : ''}}{{::(type === 'array') ? data.arrayName : ''}}</span>
+</span>
+<div ng-if="data.showAddKey && !data.collapsed">
+    <input ng-if="::type === 'object'" placeholder="Name" type="text"
+           class="form-control input-sm" ng-model="data.keyName"/>
+    <select ng-model="data.valueType" ng-options="option for option in ::valueTypes" class="form-control input-sm"
+    ></select>
+    <span ng-if="::data.valueType === data.stringName || data.valueType == data.numberName"> :
+            <input type="text" placeholder="Value" class="form-control input-sm" ng-model="data.valueName"/>
+        </span>
+    <button type="button" class="btn btn-primary btn-sm" ng-click="addItem(child, data)"><i class="glyphicon glyphicon-plus"></i></button>
+    <button type="button" class="btn btn-default btn-sm" ng-click="data.showAddKey=false"><i class="glyphicon glyphicon-remove"></i></button>
+</div>
+<div class="json-content" ng-if="!data.collapsed">
+    <div class="json-item" ng-repeat="(key, val) in child track by $id($index)">
+        <span class="json-info">
+            <span ng-if="::type === 'array'">{{::key+1}}.</span>
+            <input ng-if="::type === 'object'"
+                   class="form-control input-sm"
+                   type="text"
+                   ng-model="newkey"
+                   ng-init="newkey=key"
+                   ng-blur="moveKey(child, key, newkey)"/>
+            <i class="glyphicon glyphicon-trash json-trash" ng-click="deleteKey(child, key)"></i>
+        </span>
+        <span ng-switch="::getType(val)">
+            <span json-edit ng-switch-when="Object" child="val" type="object" collapsed="collapsed"></span>
+            <span json-edit ng-switch-when="Array" child="val" type="array" collapsed="collapsed"></span>
+            <input  ng-switch-when="Boolean" type="checkbox" ng-model="val" ng-change="child[key] = val"/>
+            <input ng-switch-when="Number" class="form-control input-sm" type="number" ng-model="val" placeholder="0" ng-change="child[key] = possibleNumber(val)"/>
+            <input ng-switch-default class="form-control input-sm" type="text" ng-model="val" placeholder="Empty" ng-change="child[key] = val"/>
+        </span>
+    </div>
+</div>

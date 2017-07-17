@@ -1,24 +1,24 @@
 {
   "name": "ng-json-edit",
-  "version": "0.2.1",
+  "version": "0.0.1",
   "description": "User friendly, visual JSON editor built as an AngularJS directive. Provides a basic GUI to edit JSON.",
-  "main": "js/directives.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mb21/JSONedit.git"
-  },
+  "main": "",
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mb21/JSONedit/issues"
-  },
-  "homepage": "https://github.com/mb21/JSONedit#readme",
+  "license": "",
+  "homepage": "",
   "dependencies": {
-      "bootstrap": "^3.3",
-      "angular": "^1.2",
-      "angular-ui-sortable": "0.12.x"
+    "angular": "^1.6.1",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-less": "^1.4.1",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-html2js": "^0.3.0",
+    "grunt-ng-annotate": "^1.0.1",
+    "grunt-prettier": "^0.1.0"
   }
 }

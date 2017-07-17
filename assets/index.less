@@ -1,0 +1,54 @@
+.json-edit {
+  position: relative;
+  background-image: linear-gradient(rgba(255, 255, 255, 1) 50%, transparent 50%, transparent);
+  background-size: 60px 60px;
+  background-color: #f3f6fa;
+  background-attachment: local;
+
+  padding:  0 0 0 15px;
+
+  .form-control {
+    width: 150px;
+    display: inline;
+  }
+  .json-item{
+    position: relative;
+    padding-left: 15px;
+    &:after {
+      content:"";
+      position: absolute;
+      border-left: 1px solid #000;
+      top: 30px;
+      bottom: 0;
+      left: 5px;
+    }
+  }
+  .json-collapsed{
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .json-trash{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+  }
+  .json-info{
+    line-height: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+
+    &:hover + .json-content{
+      background: #c8d0da;
+    }
+  }
+
+  .json-plus,
+  .json-trash,
+  .json-collapsed{
+    cursor: pointer;
+    line-height: 30px;
+  }
+}
