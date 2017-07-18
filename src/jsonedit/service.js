@@ -1,7 +1,6 @@
 angular.module('mx.json.edit').factory('mxJsonEdit', function() {
   var result = {
     getType: getType,
-    isNumber: isNumber,
     possibleNumber: possibleNumber,
     moveKey: moveKey,
     deleteKey: deleteKey,

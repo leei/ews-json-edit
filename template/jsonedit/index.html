@@ -9,14 +9,14 @@
            class="form-control input-sm" ng-model="data.keyName"/>
     <select ng-model="data.valueType" ng-options="option for option in ::valueTypes" class="form-control input-sm"
     ></select>
-    <span ng-if="::data.valueType === data.stringName || data.valueType == data.numberName"> :
+    <span ng-if="data.valueType === data.stringName || data.valueType == data.numberName"> :
             <input type="text" placeholder="Value" class="form-control input-sm" ng-model="data.valueName"/>
         </span>
     <button type="button" class="btn btn-primary btn-sm" ng-click="addItem(child, data)"><i class="glyphicon glyphicon-plus"></i></button>
     <button type="button" class="btn btn-default btn-sm" ng-click="data.showAddKey=false"><i class="glyphicon glyphicon-remove"></i></button>
 </div>
 <div class="json-content" ng-if="!data.collapsed">
-    <div class="json-item" ng-repeat="(key, val) in child track by $id($index)">
+    <div class="json-item" ng-repeat="(key, val) in child track by $id(key)">
         <span class="json-info">
             <span ng-if="::type === 'array'">{{::key+1}}.</span>
             <input ng-if="::type === 'object'"

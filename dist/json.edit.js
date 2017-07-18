@@ -61,7 +61,6 @@ angular
 angular.module('mx.json.edit').factory('mxJsonEdit', function() {
   var result = {
     getType: getType,
-    isNumber: isNumber,
     possibleNumber: possibleNumber,
     moveKey: moveKey,
     deleteKey: deleteKey,
@@ -207,14 +206,14 @@ angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", fun
     "           class=\"form-control input-sm\" ng-model=\"data.keyName\"/>\n" +
     "    <select ng-model=\"data.valueType\" ng-options=\"option for option in ::valueTypes\" class=\"form-control input-sm\"\n" +
     "    ></select>\n" +
-    "    <span ng-if=\"::data.valueType === data.stringName || data.valueType == data.numberName\"> :\n" +
+    "    <span ng-if=\"data.valueType === data.stringName || data.valueType == data.numberName\"> :\n" +
     "            <input type=\"text\" placeholder=\"Value\" class=\"form-control input-sm\" ng-model=\"data.valueName\"/>\n" +
     "        </span>\n" +
     "    <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"addItem(child, data)\"><i class=\"glyphicon glyphicon-plus\"></i></button>\n" +
     "    <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"data.showAddKey=false\"><i class=\"glyphicon glyphicon-remove\"></i></button>\n" +
     "</div>\n" +
     "<div class=\"json-content\" ng-if=\"!data.collapsed\">\n" +
-    "    <div class=\"json-item\" ng-repeat=\"(key, val) in child track by $id($index)\">\n" +
+    "    <div class=\"json-item\" ng-repeat=\"(key, val) in child track by $id(key)\">\n" +
     "        <span class=\"json-info\">\n" +
     "            <span ng-if=\"::type === 'array'\">{{::key+1}}.</span>\n" +
     "            <input ng-if=\"::type === 'object'\"\n" +
