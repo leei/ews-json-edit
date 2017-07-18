@@ -6,7 +6,7 @@ angular.module('mx.json.edit', ['mx/template/jsonedit/index.html']);
 ;
 angular
   .module('mx.json.edit')
-  .directive('jsonEdit', function($compile, mxJsonEdit, $templateCache) {
+  .directive('jsonEdit', ['$compile', 'mxJsonEdit', '$templateCache', function($compile, mxJsonEdit, $templateCache) {
     return {
       restrict: 'A',
       scope: {
@@ -55,7 +55,7 @@ angular
       }
       // templateUrl: 'mx/template/jsonedit/index.html'
     };
-  });
+  }]);
 
 ;
 angular.module('mx.json.edit').factory('mxJsonEdit', function() {
@@ -237,4 +237,4 @@ angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", fun
 }]);
 
 })();
-//# sourceMappingURL=json.edit.js.map
+//# sourceMappingURL=mx-json-edit.js.map

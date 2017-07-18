@@ -1,12 +1,11 @@
 <!doctype html>
 <html ng-app="app">
 <head>
-
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="../../node_modules/angular/angular.js"></script>
 
-    <link rel="stylesheet" href="../../dist/json.edit.css">
-    <script src="../../dist/json.edit.js"></script>
+    <link rel="stylesheet" href="../../dist/mx-json-edit.css">
+    <script src="../../dist/mx-json-edit.js"></script>
 
     <link rel="stylesheet" href="style.css">
     <script src="watchers.js"></script>
@@ -27,10 +26,10 @@
         </div>
         <div class="collapse navbar-collapse in" id="bs-example-navbar-collapse-json-edit">
             <ul class="nav navbar-nav navbar-right">
-                <li ng-class="{active: !collapsed}"><a href="#" ng-click="collapsed = false"><i class="glyphicon glyphicon-resize-full"></i></a></li>
-                <li ng-class="{active: collapsed}"><a href="#" ng-click="collapsed = true"><i class="glyphicon glyphicon-resize-small"></i></a></li>
+                <li ng-if="!wellFormed" class="text-danger"><span>JSON not well-formed!</span></li>
+                <li ng-class="{active: !collapsed}"><a href="#" ng-click="setCollapsed(false)"><i class="glyphicon glyphicon-resize-full"></i></a></li>
+                <li ng-class="{active: collapsed}"><a href="#" ng-click="setCollapsed(true)"><i class="glyphicon glyphicon-resize-small"></i></a></li>
                 <li><watchers></watchers></li>
-                <li><a href="" ng-click="setData()">setData</a></li>
             </ul>
         </div>
     </div>

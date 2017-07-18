@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    name: 'json.edit',
+    name: 'mx-json-edit',
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       options: {
@@ -26,8 +26,8 @@ module.exports = function (grunt) {
         singleQuotes: true
       },
       js: {
-        src: ['dist/<%= name %>.js'],
-        dest: 'dist/<%= name %>.js'
+        expand: true,
+        src: ['dist/<%= name %>.js']
       }
     },
     html2js: {
@@ -71,8 +71,9 @@ module.exports = function (grunt) {
         options: {
           compress: true
         },
+        expand: true,
         src: ['dist/<%= name %>.css'],
-        dest: 'dist/<%= name %>.min.css'
+        ext: '.min.css'
       }
     },
     concurrent: {

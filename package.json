@@ -1,14 +1,14 @@
 {
-  "name": "ng-json-edit",
-  "version": "0.0.1",
+  "name": "mx-json-edit",
+  "version": "1.0.0",
   "description": "User friendly, visual JSON editor built as an AngularJS directive. Provides a basic GUI to edit JSON.",
   "main": "",
   "author": "",
   "license": "",
   "homepage": "",
   "dependencies": {
-    "angular": "^1.6.1",
-    "bootstrap": "^3.3.7"
+    "angular": "^1.6.x",
+    "bootstrap": "^3.3.x"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
