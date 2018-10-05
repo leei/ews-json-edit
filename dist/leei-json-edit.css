@@ -1,4 +1,5 @@
-.json-edit {
+json-edit,
+[json-edit] {
   position: relative;
   background-image: linear-gradient(#ffffff 50%, transparent 50%, transparent);
   background-size: 60px 60px;
@@ -6,15 +7,18 @@
   background-attachment: local;
   padding: 0 0 0 15px;
 }
-.json-edit .form-control {
+json-edit .form-control,
+[json-edit] .form-control {
   width: 150px;
   display: inline;
 }
-.json-edit .json-item {
+json-edit .json-item,
+[json-edit] .json-item {
   position: relative;
   padding-left: 15px;
 }
-.json-edit .json-item:after {
+json-edit .json-item:after,
+[json-edit] .json-item:after {
   content: "";
   position: absolute;
   border-left: 1px solid #000;
@@ -22,28 +26,35 @@
   bottom: 0;
   left: 5px;
 }
-.json-edit .json-collapsed {
+json-edit .json-collapsed,
+[json-edit] .json-collapsed {
   position: absolute;
   left: 0;
   top: 0;
 }
-.json-edit .json-trash {
+json-edit .json-trash,
+[json-edit] .json-trash {
   position: absolute;
   right: 0;
   top: 0;
 }
-.json-edit .json-info {
+json-edit .json-info,
+[json-edit] .json-info {
   line-height: 30px;
   height: 30px;
   display: inline-block;
   vertical-align: middle;
 }
-.json-edit .json-info:hover + .json-content {
+json-edit .json-info:hover + .json-content,
+[json-edit] .json-info:hover + .json-content {
   background: #c8d0da;
 }
-.json-edit .json-plus,
-.json-edit .json-trash,
-.json-edit .json-collapsed {
+json-edit .json-plus,
+[json-edit] .json-plus,
+json-edit .json-trash,
+[json-edit] .json-trash,
+json-edit .json-collapsed,
+[json-edit] .json-collapsed {
   cursor: pointer;
   line-height: 30px;
 }

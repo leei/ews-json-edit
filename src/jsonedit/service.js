@@ -1,4 +1,4 @@
-angular.module('mx.json.edit').factory('mxJsonEdit', function() {
+angular.module('json-edit').factory('mxJsonEdit', function() {
   var result = {
     getType: getType,
     possibleNumber: possibleNumber,

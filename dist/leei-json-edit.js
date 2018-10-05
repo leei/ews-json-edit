@@ -1,14 +1,14 @@
 
 (function(){
 "use strict";
-angular.module('mx.json.edit', ['mx/template/jsonedit/index.html']);
+angular.module('json-edit', ['mx/template/jsonedit/index.html']);
 
 ;
 angular
-  .module('mx.json.edit')
+  .module('json-edit')
   .directive('jsonEdit', ['$compile', 'mxJsonEdit', '$templateCache', function($compile, mxJsonEdit, $templateCache) {
     return {
-      restrict: 'A',
+      restrict: 'AE',
       scope: {
         child: '=',
         type: '@',
@@ -58,7 +58,7 @@ angular
   }]);
 
 ;
-angular.module('mx.json.edit').factory('mxJsonEdit', function() {
+angular.module('json-edit').factory('mxJsonEdit', function() {
   var result = {
     getType: getType,
     possibleNumber: possibleNumber,

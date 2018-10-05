@@ -1,8 +1,8 @@
 angular
-  .module('mx.json.edit')
+  .module('json-edit')
   .directive('jsonEdit', function($compile, mxJsonEdit, $templateCache) {
     return {
-      restrict: 'A',
+      restrict: 'AE',
       scope: {
         child: '=',
         type: '@',
