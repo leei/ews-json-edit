@@ -4,7 +4,9 @@ angular.module('json-edit').factory('mxJsonEdit', function() {
     possibleNumber: possibleNumber,
     moveKey: moveKey,
     deleteKey: deleteKey,
-    addItem: addItem
+    addItem: addItem,
+    moveUp: moveUp,
+    modeDown: moveDown
   };
 
   return result;
@@ -36,6 +38,22 @@ angular.module('json-edit').factory('mxJsonEdit', function() {
     if (key !== newkey) {
       obj[newkey] = obj[key];
       delete obj[key];
+    }
+  }
+
+  function moveUp(obj, idx) {
+    if (idx > 0) {
+      var prev = obj[idx - 1];
+      obj[idx - 1] = obj[idx];
+      obj[idx] = prev;
+    }
+  }
+
+  function moveDown(obj, idx) {
+    if (idx + 1 < obj.length) {
+      var prev = obj[idx + 1];
+      obj[idx + 1] = obj[idx];
+      obj[idx] = prev;
     }
   }
 

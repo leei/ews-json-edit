@@ -36,6 +36,8 @@ angular
         scope.moveKey = mxJsonEdit.moveKey;
         scope.deleteKey = mxJsonEdit.deleteKey;
         scope.addItem = mxJsonEdit.addItem;
+        scope.moveUp = mxJsonEdit.moveUp;
+        scope.moveDown = mxJsonEdit.moveDown;
 
         if (scope.type !== 'array' && scope.type !== 'object') {
           console.error('scope.type was ' + scope.type);

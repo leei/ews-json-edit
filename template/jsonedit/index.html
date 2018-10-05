@@ -12,13 +12,23 @@
     <span ng-if="data.valueType === data.stringName || data.valueType == data.numberName"> :
             <input type="text" placeholder="Value" class="form-control input-sm" ng-model="data.valueName"/>
         </span>
-    <button type="button" class="btn btn-primary btn-sm" ng-click="addItem(child, data)"><i class="glyphicon glyphicon-plus"></i></button>
-    <button type="button" class="btn btn-default btn-sm" ng-click="data.showAddKey=false"><i class="glyphicon glyphicon-remove"></i></button>
+    <button type="button" class="btn btn-primary btn-sm"
+            ng-click="addItem(child, data)">
+        <i class="glyphicon glyphicon-plus"></i></button>
+    <button type="button" class="btn btn-default btn-sm"
+            ng-click="data.showAddKey=false">
+        <i class="glyphicon glyphicon-remove"></i></button>
 </div>
 <div class="json-content" ng-if="!data.collapsed">
     <div class="json-item" ng-repeat="(key, val) in child track by $id(key)">
-        <span class="json-info">
+        <span class="json-info clearfix">
             <span ng-if="::type === 'array'">{{::key+1}}.</span>
+            <i ng-if="::type === 'array' && key > 0"
+               ng-click="moveUp(child, key)"
+               class="glyphicon glyphicon-arrow-up json-right"></i>
+            <i ng-if="::type === 'array' && key+1 < child.length"
+               ng-click="moveUp(child, key+1)"
+               class="glyphicon glyphicon-arrow-down json-right"></i>
             <input ng-if="::type === 'object'"
                    class="form-control input-sm"
                    type="text"
@@ -30,7 +40,7 @@
         <span ng-switch="::getType(val)">
             <span json-edit ng-switch-when="Object" child="val" type="object" collapsed="collapsed"></span>
             <span json-edit ng-switch-when="Array" child="val" type="array" collapsed="collapsed"></span>
-            <input  ng-switch-when="Boolean" type="checkbox" ng-model="val" ng-change="child[key] = val"/>
+            <input ng-switch-when="Boolean" type="checkbox" ng-model="val" ng-change="child[key] = val"/>
             <input ng-switch-when="Number" class="form-control input-sm" type="number" ng-model="val" placeholder="0" ng-change="child[key] = possibleNumber(val)"/>
             <input ng-switch-default class="form-control input-sm" type="text" ng-model="val" placeholder="Empty" ng-change="child[key] = val"/>
         </span>
