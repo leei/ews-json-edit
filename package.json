@@ -1,6 +1,6 @@
 {
   "name": "leei-json-edit",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "User friendly, visual JSON editor built as an AngularJS directive. Provides a basic GUI to edit JSON.",
   "main": "",
   "author": "",
