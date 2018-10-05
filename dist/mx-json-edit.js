@@ -193,7 +193,7 @@ angular.module('mx.json.edit').factory('mxJsonEdit', function() {
 });
 
 ;
-angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", function ($templateCache) {
+angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("mx/template/jsonedit/index.html",
     "<span class=\"json-info\">\n" +
     "    <i ng-click=\"data.collapsed = !data.collapsed\" class=\"glyphicon json-collapsed\"\n" +
