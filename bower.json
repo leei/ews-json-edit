@@ -1,15 +1,15 @@
 {
-  "name": "ews-json-editor",
-  "version": "0.2.1",
+  "name": "leei-json-editor",
+  "version": "1.0.0",
   "description": "User friendly, visual JSON editor built as an AngularJS directive. Provides a basic GUI to edit JSON.",
-  "repository": "https://github.com/mb21/JSONedit",
+  "repository": "https://github.com/leei/ews-json-edit",
   "homepage": "http://mb21.github.io/JSONedit/",
   "license": "MIT License",
   "main": ["css/styles.css", "js/directives.js"],
   "ignore": ["index.html", "js/JSONedit.js"],
   "dependencies": {
       "bootstrap": "3.x.x",
-      "angular": "1.2.x",
-      "angular-ui-sortable": "0.12.x"
+      "angular": "1.5.x",
+      "angular-ui-sortable": "0.19.x"
   }
 }
