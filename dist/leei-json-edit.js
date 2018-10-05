@@ -237,4 +237,4 @@ angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", fun
 }]);
 
 })();
-//# sourceMappingURL=mx-json-edit.js.map
+//# sourceMappingURL=leei-json-edit.js.map

@@ -1,6 +1,6 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    name: 'mx-json-edit',
+    name: 'leei-json-edit',
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       options: {
