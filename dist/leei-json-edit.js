@@ -42,6 +42,8 @@ angular
         scope.moveKey = mxJsonEdit.moveKey;
         scope.deleteKey = mxJsonEdit.deleteKey;
         scope.addItem = mxJsonEdit.addItem;
+        scope.moveUp = mxJsonEdit.moveUp;
+        scope.moveDown = mxJsonEdit.moveDown;
 
         if (scope.type !== 'array' && scope.type !== 'object') {
           console.error('scope.type was ' + scope.type);
@@ -64,7 +66,9 @@ angular.module('json-edit').factory('mxJsonEdit', function() {
     possibleNumber: possibleNumber,
     moveKey: moveKey,
     deleteKey: deleteKey,
-    addItem: addItem
+    addItem: addItem,
+    moveUp: moveUp,
+    modeDown: moveDown
   };
 
   return result;
@@ -96,6 +100,22 @@ angular.module('json-edit').factory('mxJsonEdit', function() {
     if (key !== newkey) {
       obj[newkey] = obj[key];
       delete obj[key];
+    }
+  }
+
+  function moveUp(obj, idx) {
+    if (idx > 0) {
+      var prev = obj[idx - 1];
+      obj[idx - 1] = obj[idx];
+      obj[idx] = prev;
+    }
+  }
+
+  function moveDown(obj, idx) {
+    if (idx + 1 < obj.length) {
+      var prev = obj[idx + 1];
+      obj[idx + 1] = obj[idx];
+      obj[idx] = prev;
     }
   }
 
@@ -209,13 +229,23 @@ angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", fun
     "    <span ng-if=\"data.valueType === data.stringName || data.valueType == data.numberName\"> :\n" +
     "            <input type=\"text\" placeholder=\"Value\" class=\"form-control input-sm\" ng-model=\"data.valueName\"/>\n" +
     "        </span>\n" +
-    "    <button type=\"button\" class=\"btn btn-primary btn-sm\" ng-click=\"addItem(child, data)\"><i class=\"glyphicon glyphicon-plus\"></i></button>\n" +
-    "    <button type=\"button\" class=\"btn btn-default btn-sm\" ng-click=\"data.showAddKey=false\"><i class=\"glyphicon glyphicon-remove\"></i></button>\n" +
+    "    <button type=\"button\" class=\"btn btn-primary btn-sm\"\n" +
+    "            ng-click=\"addItem(child, data)\">\n" +
+    "        <i class=\"glyphicon glyphicon-plus\"></i></button>\n" +
+    "    <button type=\"button\" class=\"btn btn-default btn-sm\"\n" +
+    "            ng-click=\"data.showAddKey=false\">\n" +
+    "        <i class=\"glyphicon glyphicon-remove\"></i></button>\n" +
     "</div>\n" +
     "<div class=\"json-content\" ng-if=\"!data.collapsed\">\n" +
     "    <div class=\"json-item\" ng-repeat=\"(key, val) in child track by $id(key)\">\n" +
-    "        <span class=\"json-info\">\n" +
+    "        <span class=\"json-info clearfix\">\n" +
     "            <span ng-if=\"::type === 'array'\">{{::key+1}}.</span>\n" +
+    "            <i ng-if=\"::type === 'array' && key > 0\"\n" +
+    "               ng-click=\"moveUp(child, key)\"\n" +
+    "               class=\"glyphicon glyphicon-arrow-up json-right\"></i>\n" +
+    "            <i ng-if=\"::type === 'array' && key+1 < child.length\"\n" +
+    "               ng-click=\"moveUp(child, key+1)\"\n" +
+    "               class=\"glyphicon glyphicon-arrow-down json-right\"></i>\n" +
     "            <input ng-if=\"::type === 'object'\"\n" +
     "                   class=\"form-control input-sm\"\n" +
     "                   type=\"text\"\n" +
@@ -227,7 +257,7 @@ angular.module("mx/template/jsonedit/index.html", []).run(["$templateCache", fun
     "        <span ng-switch=\"::getType(val)\">\n" +
     "            <span json-edit ng-switch-when=\"Object\" child=\"val\" type=\"object\" collapsed=\"collapsed\"></span>\n" +
     "            <span json-edit ng-switch-when=\"Array\" child=\"val\" type=\"array\" collapsed=\"collapsed\"></span>\n" +
-    "            <input  ng-switch-when=\"Boolean\" type=\"checkbox\" ng-model=\"val\" ng-change=\"child[key] = val\"/>\n" +
+    "            <input ng-switch-when=\"Boolean\" type=\"checkbox\" ng-model=\"val\" ng-change=\"child[key] = val\"/>\n" +
     "            <input ng-switch-when=\"Number\" class=\"form-control input-sm\" type=\"number\" ng-model=\"val\" placeholder=\"0\" ng-change=\"child[key] = possibleNumber(val)\"/>\n" +
     "            <input ng-switch-default class=\"form-control input-sm\" type=\"text\" ng-model=\"val\" placeholder=\"Empty\" ng-change=\"child[key] = val\"/>\n" +
     "        </span>\n" +

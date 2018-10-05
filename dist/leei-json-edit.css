@@ -7,8 +7,8 @@
   padding: 0 0 0 15px;
 }
 .json-edit .form-control {
-  width: 150px;
   display: inline;
+  width: 150px;
 }
 .json-edit .json-item {
   position: relative;
@@ -28,6 +28,7 @@
   top: 0;
 }
 .json-edit .json-trash {
+  cursor: pointer;
   position: absolute;
   right: 0;
   top: 0;
@@ -43,6 +44,7 @@
 }
 .json-edit .json-plus,
 .json-edit .json-trash,
+.json-edit .json-right,
 .json-edit .json-collapsed {
   cursor: pointer;
   line-height: 30px;
