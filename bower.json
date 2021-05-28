@@ -8,8 +8,8 @@
   "main": ["css/styles.css", "js/directives.js"],
   "ignore": ["index.html", "js/JSONedit.js"],
   "dependencies": {
-      "bootstrap": "3.3.x",
-      "angular": "1.5.x",
+      "bootstrap": "3.x.x",
+      "angular": "1.x.x",
       "angular-ui-sortable": "0.19.x"
   }
 }
